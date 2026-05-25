@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verification Portal</title>
+<style>
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:linear-gradient(135deg,#fff8d6,#ffffff);
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+.card{
+width:90%;
+max-width:420px;
+background:white;
+padding:30px;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,0.12);
+text-align:center;
+}
+h1{
+color:#d4a000;
+margin-bottom:8px;
+}
+p{
+color:#555;
+}
+input{
+width:90%;
+padding:12px;
+margin-top:15px;
+border:2px solid #ffd54f;
+border-radius:12px;
+font-size:16px;
+}
+button{
+margin-top:15px;
+padding:12px 25px;
+border:none;
+background:#ffd54f;
+border-radius:12px;
+font-size:16px;
+cursor:pointer;
+}
+#output{
+margin-top:20px;
+padding:15px;
+display:none;
+background:#fff9c4;
+border-radius:12px;
+font-weight:bold;
+}
+</style>
+</head>
+<body>
+<div class="card">
+<h1>Verification Portal</h1>
+<p>Enter your name to continue</p>
+
+<input id="name" placeholder="Enter your name">
+<br>
+<button onclick="verify()">Verify</button>
+
+<div id="output"></div>
+</div>
+
+<script>
+function verify(){
+let name=document.getElementById("name").value.trim();
+let output=document.getElementById("output");
+
+if(name===""){
+output.style.display="block";
+output.innerHTML="Please enter your name.";
+return;
+}
+
+output.style.display="block";
+output.innerHTML="✅ You are verified, "+name+"! And now we can tell you that roll no 10 is a very good son.";
+}
+</script>
+</body>
+</html>
