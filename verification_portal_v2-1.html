@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verification Portal</title>
+<style>
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:linear-gradient(135deg,#fff6bf,#ffffff);
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+.card{
+width:90%;
+max-width:450px;
+background:white;
+padding:30px;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,0.12);
+text-align:center;
+}
+h1{color:#d4a000;}
+input{
+width:90%;
+padding:12px;
+border:2px solid #ffd54f;
+border-radius:10px;
+}
+button{
+margin-top:15px;
+padding:12px 25px;
+background:#ffd54f;
+border:none;
+border-radius:10px;
+cursor:pointer;
+font-size:16px;
+}
+.progress-container{
+display:none;
+margin-top:20px;
+background:#eee;
+border-radius:20px;
+overflow:hidden;
+}
+.progress-bar{
+height:22px;
+width:0%;
+background:#ffd54f;
+transition:0.2s;
+}
+#status,#output{
+margin-top:15px;
+font-weight:bold;
+}
+</style>
+</head>
+<body>
+<div class="card">
+<h1>Verification Portal</h1>
+<p>Enter your name to continue</p>
+
+<input id="name" placeholder="Enter your name">
+<br><br>
+<button onclick="verify()">Verify</button>
+
+<div class="progress-container" id="container">
+<div class="progress-bar" id="bar"></div>
+</div>
+
+<div id="status"></div>
+<div id="output"></div>
+
+</div>
+
+<script>
+function verify(){
+let name=document.getElementById("name").value.trim();
+let bar=document.getElementById("bar");
+let container=document.getElementById("container");
+let status=document.getElementById("status");
+let output=document.getElementById("output");
+
+if(name===""){
+status.innerHTML="Please enter your name.";
+return;
+}
+
+container.style.display="block";
+bar.style.width="0%";
+status.innerHTML="Verifying...";
+
+let progress=0;
+
+let interval=setInterval(function(){
+progress += 10;
+bar.style.width=progress+"%";
+
+if(progress>=100){
+clearInterval(interval);
+status.innerHTML="✅ Verification Complete";
+output.innerHTML="You are verified, "+name+"! And now we can tell you that roll no 10 is a very good son.";
+}
+},200);
+}
+</script>
+</body>
+</html>
